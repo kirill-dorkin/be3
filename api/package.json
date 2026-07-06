@@ -1,5 +1,5 @@
 {
-  "name": "best-electronics",
+  "name": "best-electronics-api",
   "version": "1.0.0",
   "dependencies": {
     "formidable": "^2.1.2"
