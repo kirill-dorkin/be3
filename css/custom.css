@@ -76,3 +76,180 @@ Author : themelooks.com
     }
 }
 
+/* Logo Sizing Overrides */
+.logo img {
+    max-height: 60px !important;
+    width: auto !important;
+}
+
+/* Professional Form Validation Styles */
+.form-group.has-error .form-control {
+    border-color: #e74c3c !important;
+    box-shadow: 0 0 8px rgba(231, 76, 60, 0.15) !important;
+    background-color: #fffaf9 !important;
+}
+
+.form-group.has-error .form-control:focus {
+    box-shadow: 0 0 10px rgba(231, 76, 60, 0.3) !important;
+}
+
+.has-error .help-block.text-danger {
+    color: #e74c3c !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    margin-top: 6px !important;
+    margin-bottom: 0 !important;
+    display: block;
+    animation: fadeInError 0.3s ease-out;
+}
+
+.has-error .help-block.text-danger::before {
+/*
+
+[Custom Stylesheet]
+
+Project: QuickFix - Multipurpose Servicing and Repairing HTML Template
+Version: 1.0
+Author : themelooks.com
+
+*/
+
+#cColorSwitcher {
+    display: none !important;
+}
+
+.header--nav-lang {
+    margin-right: 20px;
+}
+.header--nav-lang .dropdown-toggle {
+    display: block;
+    padding: 16px 0 17px;
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 600;
+    color: #222;
+}
+.header--nav-lang .dropdown-toggle:hover,
+.header--nav-lang .dropdown-toggle:focus {
+    color: #119ee6;
+}
+.header--nav-lang .dropdown-toggle i {
+    margin-right: 5px;
+}
+.header--nav-lang .dropdown-menu {
+    left: auto;
+    right: 0;
+    min-width: 120px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: 0 1px 5px rgba(0,0,0,.2);
+}
+.header--nav-lang .dropdown-menu > li > a {
+    display: block;
+    padding: 9px 19px 10px;
+    color: #555;
+    background-color: #fff;
+    border-style: solid;
+    border-width: 0 1px 1px;
+    border-color: #eee;
+    font-size: 14px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    text-align: left;
+}
+.header--nav-lang .dropdown-menu > li > a:hover {
+    color: #fff;
+    background-color: #119ee6;
+    border-color: #119ee6;
+}
+
+.header--topbar .links.lang-switcher {
+    margin-left: 25px;
+}
+
+.header--topbar .links.lang-switcher li.active a {
+    color: #fff !important;
+    font-weight: 700;
+}
+
+@media (min-width: 1200px) {
+    .header--navbar-top-info .nav > li + li {
+        margin-left: 45px !important;
+    }
+    .header--navbar-top-btn {
+        margin-left: 45px !important;
+    }
+}
+
+/* Logo Sizing Overrides */
+.logo img {
+    max-height: 60px !important;
+    width: auto !important;
+}
+
+/* Professional Form Validation Styles */
+.form-group.has-error .form-control {
+    border-color: #e74c3c !important;
+    box-shadow: 0 0 8px rgba(231, 76, 60, 0.15) !important;
+    background-color: #fffaf9 !important;
+}
+
+.form-group.has-error .form-control:focus {
+    box-shadow: 0 0 10px rgba(231, 76, 60, 0.3) !important;
+}
+
+.has-error .help-block.text-danger {
+    color: #e74c3c !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    margin-top: 6px !important;
+    margin-bottom: 0 !important;
+    display: block;
+    animation: fadeInError 0.3s ease-out;
+}
+
+.has-error .help-block.text-danger::before {
+    content: "\f071"; /* FontAwesome exclamation-triangle */
+    font-family: "FontAwesome";
+    margin-right: 6px;
+    font-size: 12px;
+}
+
+@keyframes fadeInError {
+    from { opacity: 0; transform: translateY(-3px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* WhatsApp Floating Widget */
+.whatsapp-float-btn {
+    position: fixed;
+    bottom: 90px;
+    right: 30px;
+    background-color: #25D366;
+    color: white !important;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 35px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    animation: bounceIn 1s;
+}
+
+.whatsapp-float-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 2px 2px 15px rgba(0,0,0,0.3);
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}

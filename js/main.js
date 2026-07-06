@@ -13,7 +13,110 @@ b(".product-single--section").find(".product--single-gallery .thumbnails").on("s
 var e=b("#map");e.length&&function(){var b=new google.maps.Map(e[0],{center:{lat:e.data("map-latitude"),lng:e.data("map-longitude")},zoom:e.data("map-zoom"),scrollwheel:!1,disableDefaultUI:!0,zoomControl:!0,styles:[{featureType:"landscape",stylers:[{hue:"#FFBB00"},{saturation:43.400000000000006},{lightness:37.599999999999994},{gamma:1}]},{featureType:"road.highway",stylers:[{hue:"#FFC200"},{saturation:-61.8},{lightness:45.599999999999994},{gamma:1}]},{featureType:"road.arterial",stylers:[{hue:"#FF0300"},
 {saturation:-100},{lightness:51.19999999999999},{gamma:1}]},{featureType:"road.local",stylers:[{hue:"#FF0300"},{saturation:-100},{lightness:52},{gamma:1}]},{featureType:"water",stylers:[{hue:"#0078FF"},{saturation:-13.200000000000003},{lightness:2.4000000000000057},{gamma:1}]},{featureType:"poi",stylers:[{hue:"#00FF6A"},{saturation:-1.0989010989011234},{lightness:11.200000000000017},{gamma:1}]}]});if("undefined"!==typeof e.data("map-marker")){var a=e.data("map-marker"),c=0;for(c;c<a.length;c++)new google.maps.Marker({position:{lat:a[c][0],
 lng:a[c][1]},map:b,animation:google.maps.Animation.DROP,draggable:!0})}}();b(".back-to-top-btn").on("click","a",function(a){a.preventDefault();b("html, body").animate({scrollTop:0},800)});b("[data-bg-img]").each(function(){var a=b(this);a.css("background-image","url("+a.data("bg-img")+")").addClass("bg--img bg--overlay").attr("data-rjs",2).removeAttr("data-bg-img")});retinajs();b('[data-trigger="sticky"]').each(function(){b(this).sticky({zIndex:999})});b("[data-form-validation] form").each(function(){b(this).validate({errorPlacement:function(){return!0}})});
-b('[data-form="ajax"] form').each(function(){var a=b(this),c=a.find(".status");a.validate({errorPlacement:function(){return!0},submitHandler:function(a){b(a).ajaxSubmit({success:function(a){c.show().html(a).delay(3E3).fadeOut("show")}})}})});var a=b('input[type="file"]'),h=a.siblings(".file-status");a.on("change",function(){var a=b(this).val().split("\\");return(a=a[a.length-1])?h.text(a):""});a=b('[data-toggle="tooltip"]');a.length&&a.tooltip();b('[data-trigger="spinner"]').each(function(){var a=
+
+// Hide Shop and Blog
+b('li.dropdown > a:contains("Магазин")').parent().hide();
+b('li.dropdown > a:contains("Shop")').parent().hide();
+b('li.dropdown > a:contains("Блог")').parent().hide();
+b('li.dropdown > a:contains("Blog")').parent().hide();
+b('li.dropdown > a:contains("Страницы")').parent().hide();
+b('li.dropdown > a:contains("Pages")').parent().hide();
+b('a[href^="shop.html"], a[href^="shop-details.html"], a[href^="cart.html"], a[href^="checkout.html"], a[href^="blog-"], a[href^="blog.html"], a[href^="experts.html"], a[href^="gallery"], a[href^="pricing.html"], a[href^="testimonial.html"], a[href^="404.html"], a[href^="coming-soon.html"]').parent('li').hide();
+b('.recent-posts--widget').hide(); // Hide recent posts widget in footer
+b('.footer--widget h2:contains("Последние сообщения")').parent().hide(); // Hide recent posts title
+b('.footer--widget h2:contains("Recent Posts")').parent().hide();
+
+// Hide Unnecessary Sections
+b('.blog--section, .products--section, .experts--section').hide(); 
+b('.gallery--section, .pricing--section, .counter--section, .testimonial--section').hide();
+
+// Auto-update copyright year
+var currentYear = new Date().getFullYear();
+b('.footer--copyright p.float--left').each(function() {
+    var text = b(this).html();
+    b(this).html(text.replace('2017', currentYear));
+});
+
+// Inject WhatsApp Floating Widget
+b('body').append('<a href="https://wa.me/996501313114?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D1%80%D0%BE%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%D1%81%D1%8F." target="_blank" class="whatsapp-float-btn" title="Написать в WhatsApp"><i class="fa fa-whatsapp"></i></a>');
+
+// Add custom phone validation rule
+b.validator.addMethod("phoneRule", function(value, element) {
+    if (this.optional(element)) return true;
+    
+    if (!/^[0-9\+\-\(\)\s]+$/.test(value)) return false;
+    
+    var digits = value.replace(/\D/g, '');
+    
+    if (digits.length === 12 && digits.startsWith('996')) return true;
+    if (digits.length === 10 && digits.startsWith('0')) return true;
+    if (digits.length === 9 && !digits.startsWith('0')) return true;
+    
+    return false;
+}, "Пожалуйста, введите корректный номер КР (например: +996 555 123 456)");
+
+// Add custom name validation rule (no numbers)
+b.validator.addMethod("nameRule", function(value, element) {
+    if (this.optional(element)) return true;
+    return /^[a-zA-Zа-яА-ЯёЁ\s\-']+$/.test(value);
+}, "Имя может содержать только буквы, пробелы и дефисы");
+
+// Translate default messages
+b.extend(b.validator.messages, {
+    required: "Это поле обязательно",
+    email: "Введите корректный email",
+    url: "Введите корректный URL",
+    number: "Введите число",
+    minlength: b.validator.format("Введите не менее {0} символов")
+});
+
+b('[data-form="ajax"] form, form[data-form="ajax"]').each(function(){
+    var a=b(this),c=a.find(".status");
+    a.validate({
+        errorElement: 'span',
+        errorClass: 'help-block text-danger',
+        errorPlacement: function(error, element) {
+            if(element.parent('.input-group').length) {
+                error.insertAfter(element.parent());
+            } else {
+                error.insertAfter(element);
+            }
+        },
+        highlight: function(element) {
+            b(element).closest('.form-group').addClass('has-error');
+        },
+        unhighlight: function(element) {
+            b(element).closest('.form-group').removeClass('has-error');
+        },
+        submitHandler:function(form){
+            b(form).ajaxSubmit({
+                success:function(response){
+                    c.show().html(response).delay(5E3).fadeOut("slow");
+                    if (response.indexOf("alert-success") !== -1) {
+                        form.reset();
+                        b(form).find(".file-status").text("Имя файла");
+                    }
+                },
+                error:function(xhr){
+                    c.show().html(xhr.responseText || '<div class="alert alert-danger">Ошибка отправки</div>').delay(5E3).fadeOut("slow");
+                }
+            })
+        }
+    });
+    // Add phone rule and make required to input[type="tel"]
+    a.find('input[type="tel"], input[name="phone"], input[name="tel"]').each(function() {
+        b(this).rules("add", { required: true, phoneRule: true });
+    });
+    // Add name rule and minlength to name fields
+    a.find('input[name="name"]').each(function() {
+        b(this).rules("add", { required: true, minlength: 2, nameRule: true });
+    });
+    // Add minlength to messages
+    a.find('textarea[name="message"]').each(function() {
+        b(this).rules("add", { required: true, minlength: 5 });
+    });
+});
+var a=b('input[type="file"]'),h=a.siblings(".file-status");a.on("change",function(){var a=b(this).val().split("\\");return(a=a[a.length-1])?h.text(a):""});a=b('[data-toggle="tooltip"]');a.length&&a.tooltip();b('[data-trigger="spinner"]').each(function(){var a=
 b(this);a.spinner({min:a.data("min"),max:a.data("max")})});a=b('[data-trigger="date"]');a.length&&a.datepicker({showOtherMonths:!0,selectOtherMonths:!0});var k=b('[data-trigger="time"]');a.length&&k.timepicker();b(".owl-carousel").each(function(){var a=b(this);a.owlCarousel({items:d(a.data("owl-items"),1),margin:d(a.data("owl-margin"),0),loop:d(a.data("owl-loop"),!0),smartSpeed:1200,autoplaySpeed:800,autoplay:d(a.data("owl-autoplay"),!0),mouseDrag:d(a.data("owl-drag"),!0),nav:d(a.data("owl-nav"),
 !1),navText:['<i class="fa fm fa-arrow-left"></i>','<i class="fa flm fa-arrow-right"></i>'],dots:d(a.data("owl-dots"),!1),responsive:d(a.data("owl-responsive"),{})})});a=b('[data-popup="img"]');a.length&&a.magnificPopup({type:"image"});a=b('[data-popup="video"]');a.length&&a.magnificPopup({type:"iframe"});a=b('[data-counter-up="numbers"]');a.length&&a.counterUp({delay:10,time:1E3});b("[data-countdown]").each(function(){var a=b(this);a.countdown(a.data("countdown"),function(a){b(this).html("<ul>"+
 a.strftime("<li><strong>%D</strong><span>Days</span></li><li><strong>%H</strong><span>Hours</span></li><li><strong>%M</strong><span>Minutes</span></li><li><strong>%S</strong><span>Seconds</span></li>")+"</ul>")})});"undefined"!==typeof b.cColorSwitcher&&b.cColorSwitcher({switcherTitle:"Main Colors:",switcherColors:[{bgColor:"#f69323",filepath:"css/colors/color-1.css"},{bgColor:"#82b440",filepath:"css/colors/color-2.css"},{bgColor:"#ff5252",filepath:"css/colors/color-3.css"},{bgColor:"#e91e63",filepath:"css/colors/color-4.css"},

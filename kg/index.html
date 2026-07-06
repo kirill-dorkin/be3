@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en">
+<html dir="ltr" lang="ru">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>QuickFix - Көп максаттуу тейлөө жана оңдоо HTML шаблону</title>
-    <meta name="author" content="ThemeLooks">
-    <meta name="description" content="Multipurpose Servicing and Repairing HTML Template">
-    <meta name="keywords" content="quickfix, computer repair, laptop repair, ipad repair, iphone repair, tablet repair, mobile repair, multipurpose, responsive html template, technology, bootstrap, rtl, seo">
+    <title>Ремонт телефонов, ноутбуков и электроники в Бишкеке | Best Electronics</title>
+    <meta name="author" content="Best Electronics">
+    <meta name="description" content="Профессиональный ремонт смартфонов, планшетов, ноутбуков, ПК и другой электроники в Бишкеке. Быстро, качественно, с гарантией. Best Electronics.">
+    <meta name="keywords" content="ремонт телефонов бишкек, ремонт ноутбуков, сервисный центр бишкек, best electronics, починить iphone бишкек, ремонт электроники, ремонт макбуков">
     <link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
     <link rel="icon" href="../favicon.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700|Source+Sans+Pro:300,400,600" rel="stylesheet">
@@ -223,7 +223,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 col-md-offset-8">
-                            <form action="https://themelooks.us/demo/quickfix/html/preview/sendmail.php" method="post">
+                            <form action="/api/send-message" method="post">
                                 <h2 class="h4 text-center">Баасын эсептөөны алыңыз</h2>
                                 <div class="status"></div>
                                 <div class="row">
@@ -249,7 +249,7 @@
             <div class="container">
                 <div class="row row--vc">
                     <div class="appointment--form col-md-4" data-form="ajax">
-                        <form action="https://themelooks.us/demo/quickfix/html/preview/sendmail.php" method="post">
+                        <form action="/api/send-message" method="post">
                             <input type="hidden" name="submitType" value="ajax">
                             <h2 class="h4 text--primary text-center">Оңдоого жазылуу</h2>
                             <div class="status"></div>
@@ -739,7 +739,7 @@
                     <h2 class="h2">Биздин Эксперттер</h2>
                     <p>Профессионалыбызды тааныштыруу</p>
                 </div>
-                <div class="expert--members owl-carousel" data-owl-items="4" data-owl-margin="30" data-owl-responsive="{"0":{"items": "1"}, "551":{"items": "2"}, "992":{"items": "3"}, "1200":{"items": "4"}}">
+                <div class="expert--members owl-carousel" data-owl-items="4" data-owl-margin="30" data-owl-responsive='{"0":{"items": "1"}, "551":{"items": "2"}, "992":{"items": "3"}, "1200":{"items": "4"}}'>
                     <div class="expert--member">
                         <div class="expert--member-img"> <img src="../img/experts-img/member-01.jpg" alt="" data-rjs="2">
                             <div class="expert--member-info bg--overlay">
@@ -1221,6 +1221,12 @@
     <script src="../js/custom-color-switcher.min.js"></script>
     <script src="../js/retina.min.js"></script>
     <script src="../js/main.js"></script>
+
+<!-- WhatsApp Floating Widget -->
+<a href="https://wa.me/996501313114?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D1%80%D0%BE%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%D1%81%D1%8F." target="_blank" style="position:fixed;bottom:90px;right:30px;background-color:#25D366;color:white;width:60px;height:60px;border-radius:50%;text-align:center;font-size:35px;box-shadow:2px 2px 10px rgba(0,0,0,0.2);z-index:9999;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+    <i class="fa fa-whatsapp"></i>
+</a>
+
 </body>
 
 </html>
